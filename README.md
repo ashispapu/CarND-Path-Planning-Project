@@ -18,7 +18,7 @@ Car is able to drive without incident.
 #### CRITERIA -2
 ##### The car drives according to the speed limit.
 The car doesn't drive faster than the speed limit. Also the car isn't driving much slower than speed limit unless obstructed by traffic.
-Car is following max speed limit and not going beyond 50 MPH. <Code line number 350-359>
+Car is following max speed limit and not going beyond 50 MPH.  
 
 #### CRITERIA -3
 ##### Max Acceleration and Jerk are not Exceeded .
@@ -27,7 +27,7 @@ The car does not exceed a total acceleration of 10 m/s^2 and a jerk of 10 m/s^3.
 #### CRITERIA -4
 ##### Car does not have collisions.
 The car does not come into contact with any of the other cars on the road. 
-I check distance from the car in front of the ego car and if it is too close then I speed down the ego car. <Code line number 255-268>
+I check distance from the car in front of the ego car and if it is too close then I speed down the ego car.
 
 #### CRITERIA -5
 ##### The car stays in its lane, except for the time between changing lanes.
