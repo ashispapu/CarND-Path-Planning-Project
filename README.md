@@ -9,8 +9,7 @@ In this project goal was to safely navigate around a virtual highway with other 
 
 #### Below is the link  youtibe video 
 
-<a href="https://www.youtube.com/watch?v=MlFCDmvA9Pc&feature=youtu.be" target="_blank"><img src=" " 
-alt="Demo Link - YouTube" width="240" height="180" border="10" /></a>
+<a href="https://www.youtube.com/watch?v=MlFCDmvA9Pc&feature=youtu.be" target="_blank"></a>
 
 
 ### Rubric points and description
@@ -62,7 +61,7 @@ Below steps describe the details of lane change process:
 
 
 ##### There is a reflection on how to generate paths.
-if previous state of the car is almost empty, use the car as a starting reference otherwise use the previous points as starting reference. Then 3 anchor points are added , each  30 mts apart from each other . Now I shift all points to car reference points or zero angle. Now I fit a spline with all of the above points. Then I devide the target distance that car need to cover into 50 points and using the spline get all 50 pairs of x,y points. After that converted these points back to global coordinate. After all of this all the points are adeed to the path to be followed by the ego car 
+if previous state of the car is almost empty, use the car as a starting reference otherwise use the previous points as starting reference. Then 3 anchor points are added , each  30 mts apart from each other . Now I shift all points to car reference points or zero angle. Now I fit a spline with all of the above points. Then I devide the target distance that car need to cover into 50 points and using the spline get all 50 pairs of x,y points. After that converted these points back to global coordinate. After all of this all the points are added to the path to be followed by the ego car 
 
 
 
