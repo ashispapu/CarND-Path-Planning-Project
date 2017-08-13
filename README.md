@@ -7,12 +7,7 @@ I have used the Term3 Simulator which contains the Path Planning Project from th
 ### Goals
 In this project goal was to safely navigate around a virtual highway with other traffic that is driving +-10 MPH of the 50 MPH speed limit. I was provided the car's localization and sensor fusion data, there was also a sparse map list of waypoints around the highway. The car should try to go as close as possible to the 50 MPH speed limit, which means passing slower traffic when possible (other cars will try to change lanes too). The car should avoid hitting other cars at all cost as well as driving inside of the marked road lanes at all times, unless going from one lane to another. The car should be able to make one complete loop around the 6946m highway. Since the car is trying to go 50 MPH, it should take a little over 5 minutes to complete 1 loop. Also the car should not experience total acceleration over 10 m/s^2 and jerk that is greater than 50 m/s^3.
 
-#### Below is the link to youtube video 
 
-
-<a href="https://www.youtube.com/watch?v=MlFCDmvA9Pc&feature=youtu.be
-" target="_blank"><img src="http://img.youtube.com/vi/D4-ug-HZGPI/0.jpg" 
-alt="Demo Link - YouTube" width="240" height="180" border="10" /></a>
 
 ### Rubric points and description
 #### CRITERIA -1
@@ -61,6 +56,12 @@ Below steps describe the details of lane change process:
 
 3. If point 1 and 2 are not true then stay in current lane.
 
+#### Below is the link to youtube video 
+
+
+<a href="https://www.youtube.com/watch?v=MlFCDmvA9Pc&feature=youtu.be
+" target="_blank"><img src="http://img.youtube.com/vi/D4-ug-HZGPI/0.jpg" 
+alt="Demo Link - YouTube" width="240" height="180" border="10" /></a>
 
 ##### There is a reflection on how to generate paths.
 if previous state of the car is almost empty, use the car as a starting reference otherwise use the previous points as starting reference. Then 3 anchor points are added , each  30 mts apart from each other . Now I shift all points to car reference points or zero angle. Now I fit a spline with all of the above points. Then I devide the target distance that car need to cover into 50 points and using the spline get all 50 pairs of x,y points. After that converted these points back to global coordinate. After all of this all the points are added to the path to be followed by the ego car 
