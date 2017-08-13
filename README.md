@@ -2,10 +2,69 @@
 Self-Driving Car Engineer Nanodegree Program
    
 ### Simulator.
-You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases).
+I have used the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases).
 
 ### Goals
-In this project your goal is to safely navigate around a virtual highway with other traffic that is driving +-10 MPH of the 50 MPH speed limit. You will be provided the car's localization and sensor fusion data, there is also a sparse map list of waypoints around the highway. The car should try to go as close as possible to the 50 MPH speed limit, which means passing slower traffic when possible, note that other cars will try to change lanes too. The car should avoid hitting other cars at all cost as well as driving inside of the marked road lanes at all times, unless going from one lane to another. The car should be able to make one complete loop around the 6946m highway. Since the car is trying to go 50 MPH, it should take a little over 5 minutes to complete 1 loop. Also the car should not experience total acceleration over 10 m/s^2 and jerk that is greater than 50 m/s^3.
+In this project goal was to safely navigate around a virtual highway with other traffic that is driving +-10 MPH of the 50 MPH speed limit. I was provided the car's localization and sensor fusion data, there was also a sparse map list of waypoints around the highway. The car should try to go as close as possible to the 50 MPH speed limit, which means passing slower traffic when possible (other cars will try to change lanes too). The car should avoid hitting other cars at all cost as well as driving inside of the marked road lanes at all times, unless going from one lane to another. The car should be able to make one complete loop around the 6946m highway. Since the car is trying to go 50 MPH, it should take a little over 5 minutes to complete 1 loop. Also the car should not experience total acceleration over 10 m/s^2 and jerk that is greater than 50 m/s^3.
+
+#### Below is the link  youtibe video 
+
+<a href="https://www.youtube.com/watch?v=MlFCDmvA9Pc&feature=youtu.be" target="_blank"><img src=" " 
+alt="Demo Link - YouTube" width="240" height="180" border="10" /></a>
+
+
+### Rubric points and description
+#### CRITERIA -1
+##### The car is able to drive at least 4.32 miles without incident..
+The top right screen of the simulator shows the current/best miles driven without incident. Incidents include exceeding acceleration/jerk/speed, collision, and driving outside of the lanes. 
+Car is able to drive without incident.
+
+#### CRITERIA -2
+##### The car drives according to the speed limit.
+The car doesn't drive faster than the speed limit. Also the car isn't driving much slower than speed limit unless obstructed by traffic.
+Car is following max speed limit and not going beyond 50 MPH. <Code line number 350-359>
+
+#### CRITERIA -3
+##### Max Acceleration and Jerk are not Exceeded .
+The car does not exceed a total acceleration of 10 m/s^2 and a jerk of 10 m/s^3. I gradually change the speed to avoid exceeding max acceleration and jerk.
+
+#### CRITERIA -4
+##### Car does not have collisions.
+The car does not come into contact with any of the other cars on the road. 
+I check distance from the car in front of the ego car and if it is too close then I speed down the ego car. <Code line number 255-268>
+
+#### CRITERIA -5
+##### The car stays in its lane, except for the time between changing lanes.
+The car doesn't spend more than a 3 second length out side the lane lanes during changing lanes, and every other time the car stays inside one of the 3 lanes on the right hand side of the road.
+
+#### CRITERIA -6
+##### The car is able to change lanes
+The car is able to smoothly change lanes when it makes sense to do so, such as when behind a slower moving car and an adjacent lane is clear of other traffic. I have use spline library for smooth paths.
+
+Below steps describe the details of lane change process:
+1. Check if Left lane exist
+
+1.1 Check if car next to the ego car in left lane is at safe  future distance and moving faster than the speed of ego car.
+
+1.2 Check if car just behind to the ego car in left lane is at safe future distance .
+  
+1.3 If both 1.1 and 1.2 are satisfied then speed up and change to left lane.
+
+2. Check if Right lane exist
+
+2.1 Check if car next to the ego car in right lane is at safe future distance and moving faster than the speed of ego car.
+
+2.2 Check if car just behind to the ego car in right lane is at safe future distance.
+  
+2.3 If both 2.1 and 2.2 are satisfied then speed up and change to right lane.
+
+3. If point 1 and 2 are not true then stay in current lane.
+
+
+##### There is a reflection on how to generate paths.
+if previous state of the car is almost empty, use the car as a starting reference otherwise use the previous points as starting reference. Then 3 anchor points are added , each  30 mts apart from each other . Now I shift all points to car reference points or zero angle. Now I fit a spline with all of the above points. Then I devide the target distance that car need to cover into 50 points and using the spline get all 50 pairs of x,y points. After that converted these points back to global coordinate. After all of this all the points are adeed to the path to be followed by the ego car 
+
+
 
 #### The map of the highway is in data/highway_map.txt
 Each waypoint in the list contains  [x,y,s,dx,dy] values. x and y are the waypoint's map coordinate position, the s value is the distance along the road to get to that waypoint in meters, the dx and dy values define the unit normal vector pointing outward of the highway loop.
